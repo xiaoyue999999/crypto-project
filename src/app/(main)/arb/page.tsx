@@ -1,4 +1,5 @@
 export default function ArbPage() {
+
     return (
         <main>
             <div className="p-4">
