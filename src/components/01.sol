@@ -10,7 +10,14 @@ interface ITIP20 is IERC20 {
     function transferWithMemo(address to, uint256 amount, bytes32 memo) external;
 }
 
+// 也算是一种交互路径
+// https://onchaingm.com/
+
+
 // 需要先给合约转钱 然后使用合约进行批量转账
+// ["", "", ""]
+// [132, 3243, 7328]
+// ["0xc40a79e6484729dfeea7f594f569ccaabfb0f8b90c8380c44c854cf98009bd38", "0x8878ff04abf0fbb5346d0624689a206c11197f467d5c657443d752064b521f45", "0x75f7c68a3e960bcf73ef3df4cf665cf079ce7914853bd65e3410fe2fe26c830e"]
 contract PaymentSender is Ownable {
     using SafeERC20 for IERC20;
 
