@@ -9,6 +9,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 const config = getDefaultConfig({
     appName: 'Crypto',
     projectId: 'YOUR_PROJECT_ID',
+    multiInjectedProviderDiscovery: true,
     chains: [mainnet, polygon, optimism, arbitrum, base],
 });
 
