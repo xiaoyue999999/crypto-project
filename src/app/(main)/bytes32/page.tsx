@@ -19,6 +19,7 @@ function generateRandomString(length = 10) {
 export default function ArbPage() {
     const [bytes32Value, setBytes32Value] = React.useState<any>('');
     const [walletCount, setWalletCount] = React.useState<any>([]);
+    const [numberOfWallets, setNumberOfWallets] = React.useState<number>(5);
 
     function createWallets(num: number) {
         const wallets = [];
@@ -46,10 +47,19 @@ export default function ArbPage() {
                 <h1>ArbPage</h1>
             </div>
 
+            <div style={{ width: '200px', marginBottom: '20px' }}>
+                <h3>需要几个地址==={numberOfWallets}</h3>
+                <Input
+                    onChange={(e) => {
+                        setNumberOfWallets(Number(e.target.value));
+                    }}
+                />
+            </div>
+
             <div style={{ display: 'flex', gap: 12 }}>
                 <div style={{ border: '1px' }}>
-                    <Button onClick={() => createWallets(5)}>
-                        批量创建钱包5个
+                    <Button onClick={() => createWallets(numberOfWallets)}>
+                        批量创建钱包
                     </Button>
                 </div>
                 <div style={{ width: '200px' }}>
@@ -59,7 +69,7 @@ export default function ArbPage() {
                             const max = 50000000;
 
                             const randomInts = Array.from(
-                                { length: 5 },
+                                { length: numberOfWallets },
                                 () =>
                                     Math.floor(
                                         Math.random() * (max - min + 1)
@@ -75,10 +85,8 @@ export default function ArbPage() {
                 <div style={{ width: '200px' }}>
                     <Button
                         onClick={() => {
-                            const count = 5; // 如果以后需要生成 10 个，只需改这里
-
                             const bytes32Array = Array.from(
-                                { length: count },
+                                { length: numberOfWallets },
                                 () => {
                                     const randomStr = generateRandomString(10);
                                     return keccak256(
